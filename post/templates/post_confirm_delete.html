@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container mb-6 mt-6">
+    <div class="notification is-primary">
+        Edit your <strong>stories</strong>.
+    </div>
+</div>
+<div class="container is-flex  is-flex-direction-column">
+    <div class="is-flex is-justify-content-center is-align-content-center">
+         <h1 class="is-size-4 mb-6">Are you sure to delete the post <span class="has-text-weight-bold">"{{post.title}}"</span> ?</h1>
+    </div>
+    <div class="is-flex is-justify-content-center is-align-content-center">
+        <form method="post">
+            {% csrf_token %}
+            {{form}}
+            <input class="button is-danger is-small " type="submit" value="YES">
+        </form>
+   </div>
+   <div>
+        <form action="{% url 'all_posts' %}" class="mt-6">
+            <button class="button is-link is-light is-small is-outlined" type="submit">Back to Home</button>
+        </form>
+   </div>
+</div>
+{% endblock %}
+

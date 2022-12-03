@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<div class="container is-flex is-justify-content-center" style="width:800px; margin-top: 100px;">
+    <div style="width: 50%; margin-right: 30px;">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="field">
+                <label class="label">Username</label>
+                <div class="control has-icons-left has-icons-right">
+                    {{form.username}}
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left has-icons-right">
+                    {{form.email}}
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">First Name</label>
+                <div class="control has-icons-left has-icons-right">
+                    {{form.first_name}}
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </div>
+            
+            </div>
+            <div class="field">
+                <label class="label">Last Name</label>
+                <div class="control has-icons-left has-icons-right">
+                    {{form.last_name}}
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </div>
+            
+            </div>
+          
+            <div class="control mt-6 is-flex is-justify-content-space-between">
+                <button class="button is-primary">Save</button>
+                <button id="cancel" type="button" cancel" class="button is-danger ml-6 is-outlined">Cancel</button>
+            </div>
+            {% if messages %}
+            <div class="notification is-danger mt-6">
+                {% for message in messages %}
+                <p>{{ message }}<span class="icon is-small is-right ml-6">
+                        <i class="fas fa-check"></i>
+                    </span></p>
+            
+                {% endfor %}
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    document.getElementById("cancel").onclick = function () {
+        console.log("cancel")
+        location.href = "{% url 'all_posts' %}";
+    };
+</script>
+
+
+
+{% endblock %}

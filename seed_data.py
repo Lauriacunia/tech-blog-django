@@ -1,0 +1,23 @@
+from post.models import Post
+from django.contrib.auth.models import User
+
+User(username='lau', password='passlau123', email='lau@gmail.com').save()
+User(username='mica', password='passmica123', email='mica@gmail.com').save()
+User(username='jose', password='passjose123', email='jose@gmail.com').save()
+user_1 = User.objects.get(username='lau')
+user_2 = User.objects.get(username='mica')
+user_3 = User.objects.get(username='jose')
+
+Post(title='Salary of a SQL Data Engineer', content='Data Engineers have always had to be familiar with relational SQL databases, but with newer data analytics platforms that even offer data integration and machine learning via SQL, more and more Data Engineers are focusing on this programming language. Is this paying off?', author= user_1, thumbnail='images/1.jpeg').save()
+Post(title='Top 5 reasons why developers love Rust programming language', content='Rust is one of the few modern languages that has found a place in the industry where programmers are able to create code that is used by actual businesses. Let’s take a look at the things that make coding in Rust so appealing to programmers.', author= user_2, thumbnail='images/2.png').save()
+Post(title='My Top 8 VS Code Extensions', content='I recently gave a talk at Microsoft Ignite where I used Visual Studio Code. The most frequently asked question was what extensions are you using? So, in this post I will share my top 8 Visual Studio Code extensions.', author=user_3, thumbnail='images/3.png').save()
+Post(title='Top 4 event-driven architecture patterns', content='Software systems keep evolving rapidly and the number of people using software also keeps increasing by a large margin every year. This leads to new patterns and tools being introduced to accommodate for those evolvements.', author=user_2, thumbnail='images/4.jpeg').save()
+Post(title='All About React’s Proposed New use() Hook', content='A feature proposal from the React core team is causing some buzz in the React ecosystem, drawing both excitement for its new capabilities, as well as some concerns about how it’s going to be implemented. In this post, we’ll dig into what the new feature looks like, what problem it solves, and what the concerns are being raised.', author=user_2, thumbnail='images/5.jpeg').save()
+Post(title='That’s why you need to understand class scopes in Python', content='Take a look at the below code and try to find out the value for each print() before checking the results. If you get them all right and completely understand why those are the right results, this article will not provide too much new information, otherwise I strongly encourage you to continue reading in order to understand the underlying concepts.', author=user_3, thumbnail='images/6.png').save()
+Post(title='Managing Sessions in Django', content='In my article “Managing Cookies in Django,” I discussed how cookies allow us to store data in the browser easily. Although there’s no doubt cookies are useful, they have the following problems.', author=user_3, thumbnail='images/7.jpeg').save()
+Post(title='5 Lessons from Introducing Product Engineering Squads', content='Ialways get reflective around this time of year; autumn is in the air, golden leaves are falling from the trees and the holidays are within sight. It was while I was walking into work this morning that I realised it’s coming up on the third anniversary of introducing the idea of Product Engineering Squads with my team here at Which?, a UK not-for-profit focused on making consumers’ lives simpler, fair and safer.', author=user_1, thumbnail='images/8.jpeg').save()
+Post(title='7 Best GitHub Repositories To Become a Better Programmer', content='In my opinion, after documentation, GitHub repositories are one of the best ways to learn to program. There are a lot of resources available to help you to learn Programming and it’s easy to get lost among them. I’ve put together a list of 7 repositories that will help you to become a better programmer.', author=user_2, thumbnail='images/9.jpeg').save()
+Post(title='10 Developments Tools That Every Software Developer Must Try', content='Do you want to learn about the best programming tools? This article will satisfy you completely. Programming tools are actually software used to build, edit, maintain, support, and debug an application.', author=user_3, thumbnail='images/10.jpeg').save()
+
+
+print('📚 Se han creado algunos usuarios y post iniciales ')

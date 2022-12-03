@@ -1,0 +1,31 @@
+<div class="is-flex is-justify-content-center" style="flex-wrap: wrap;">
+    {% for post in posts %}
+    <article class="media m-5" style="width: 850px"> 
+        <figure class="image media-left" style="width: 350px;">
+                <img src='media/{{post.thumbnail}}'>
+        </figure>
+        <div class="media-content">
+            <div class="content " style="margin:0px; padding:0px;">
+                <p  style="margin:0px; padding:0px;">
+                    <strong>{{post.title}}</strong> 
+                </p>
+                <p style="margin:0px; padding:0px;"> <small><strong>{{post.author.username}}</strong></small> <small>{{post.date_posted}}</small> 
+                </p>
+                <br>
+                {% if post.content|length >= 150 %}
+                {{post.content |truncatechars:150}}
+                {% else %}
+                {{post.content}}
+                {% endif %}
+            </div>
+            <nav class="level is-mobile is-flex is-justify-content-right"> 
+                <form action="{% url 'detail_post' post.id %}">
+                    <button class="button is-link is-light is-small is-outlined" type="submit">Read more</button>
+                </form>    
+            </nav>
+
+        </div>
+    </article>
+    {% endfor %}
+
+</div>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+    <div class="notification is-primary mt-5">
+        <h1 class="is-size-4"> <strong>{{post.title}}</strong></h1>
+        <p style="margin:0px; padding:0px;"> <small>{{post.author}}</small> <small>{{post.date_posted}}</small>
+    </div>
+    <div class="is-flex is-justify-content-center">
+        <figure class="is-flex is-justify-content-center image media-left" style="width: 750px;">
+            <img src='../../media/{{post.thumbnail}}'>
+        </figure>
+    </div>
+    <div>
+        <p class="is-size-5 mt-5 has-text-justified">{{post.content}}</p>
+    </div>
+    <form action="{% url 'all_posts' %}" class="mt-6">
+        <button class="button is-link is-light is-small is-outlined" type="submit">Back to Home</button>
+    </form>
+   
+    
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
+    <title>Candy Code</title>
+</head>
+
+<body>
+
+    <div class="container is-flex is-justify-content-center" style="width:800px; margin-top: 100px;">
+        <div style="width: 50%; margin-right: 30px;">
+            <form method="POST" action="/register">
+                {% csrf_token %}
+                <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control has-icons-left has-icons-right">
+                        {{form.username}}
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                
+                </div>
+                
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        {{form.email}}
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left">
+                        <input class="input is-link" type="password" name="password1">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Confirm Password</label>
+                    <div class="control has-icons-left">
+                        <input class="input is-link" type="password" name="password2">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="control mt-6 is-flex is-justify-content-space-between">
+                    <button class="button is-primary">Sign Up</button>
+                    <button id="cancel" type="button" cancel" class="button is-danger ml-6 is-outlined">Cancel</button>
+                </div>
+                {% if messages %}
+                <div class="notification is-danger mt-6">
+                    {% for message in messages %}
+                    <p>{{ message }}<span class="icon is-small is-right ml-6">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </span></p>
+                
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </form>
+        </div>
+        <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification is-primary" style="display:flex; flex-direction:column; justify-content:space-between">
+                <div>
+                    <p class="title">Hello, Friend !</p>
+                    <p class="subtitle">Enter your personal detail and start your journey with us.</p>
+                </div>
+                
+
+                <p>Already a member? <a href="{% url 'login' %}">Log in !</a></p>
+            </article>
+            
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById("cancel").onclick = function () {
+            console.log("cancel")
+            location.href = "{% url 'all_posts' %}";
+        };
+    </script>
+</body>
+
+</html>

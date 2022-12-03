@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+{% include 'hero.html' %}
+    <div class="container">
+        <div class="notification is-primary mt-6 is-flex is-justify-content-space-between">
+            <h1 class="is-size-4"> <strong>Let's read</strong>.</h1>
+            <form method="get">
+                {% csrf_token %}
+                <div class="field has-addons">
+                    <div class="control">
+                        <input class="input" type="search" name="search" placeholder="Find a topic">
+                    </div>
+                    <div class="control">
+                        <button type="submit" class="button is-info">
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% if is_filtered == True %}
+            <form action="{% url 'all_posts' %}" class="mt-6">
+                <button class="button is-link is-light is-small is-outlined" type="submit">Back to Home</button>
+            </form>
+        {% endif %}
+        {% if messages %}
+        <div class="notification is-danger mt-6">
+            {% for message in messages %}
+            <p>{{ message }}<span class="icon is-small is-right ml-6">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </span></p>
+        
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% include 'posts_list.html' %}
+    </div>
+    <div div class="container mt-5" style="width: 800px">
+        {% include 'pagination.html' %}
+    </div>
+
+{% endblock %}

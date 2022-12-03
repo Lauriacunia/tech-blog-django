@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <div class="container mb-6 mt-6">
+        <div class="notification is-primary">
+            Write a <strong>story</strong>.
+        </div>
+    </div>
+    <div class="container" style="width: 70%;">
+        <form method="POST"  enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="button is-primary m-5">Save</button>
+        </form>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+

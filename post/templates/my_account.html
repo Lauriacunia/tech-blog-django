@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container mb-6 mt-6">
+    <div class="notification is-primary">
+        Edit your <strong>stories</strong>.
+    </div>
+</div>
+
+<div class="is-flex is-justify-content-center" style="flex-wrap: wrap;">
+        {% if not posts %} 
+        <div>
+            <div style="width: 350px; ">
+                <img src="../../media/not-post.gif" alt="hero image">
+            </div>
+            <div>
+                <form action="{% url 'new_post' %}" class="mt-6">
+                    <button class="button is-link is-light is-small is-outlined" type="submit">Go to Write</button>
+                </form>
+            </div>
+        </div>
+        {% else %}
+
+        {% for post in posts %}
+        <div class="card notification is-info" style="width: 850px;">
+            <div class="card-content" style="padding:0px;">
+                <p class="is-size-4">
+                    {{post.title}}
+                </p>
+                <p class="is-size-6">
+                   <small>{{post.date_posted}}</small>
+                </p>
+            </div>
+            <nav class="level is-mobile is-flex is-justify-content-right">
+                <form action="{% url 'edit_post' post.id %}">
+                    <button class="button is-link mr-3 " type="submit" style="width: 100px;">
+                        <span class="icon mr-2">
+                            <i class="fas fa-pen"></i>
+                        </span>
+                        Edit</button>
+                </form>
+                <form action="{% url 'delete_post' post.id %}">
+                    <button class="button is-danger " type="submit" style="width: 100px;">
+                        <span class="icon mr-2">
+                          <i class="fas fa-trash"></i>
+                        </span> 
+                    Delete</button>
+                </form>
+            </nav>
+        </div>
+        {% endfor %}
+        {% endif %}
+    
+</div>
+
+{% endblock %}
